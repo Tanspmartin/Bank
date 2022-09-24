@@ -1,0 +1,27 @@
+.container{
+    width: 450px;
+    height: 400px;
+    background-color: rgb(255, 255, 255);
+    margin-top: 120px;
+    border-radius: 5%;
+      
+}
+#bt{
+   margin-left: 135px;
+   border: none;
+   background-color: rgb(12, 203, 50);
+   width: 150px;
+   height: 40px;
+   color: white;
+   font-size: medium;
+   font-weight: 700;
+   border-radius: 12px;
+}
+#bt:hover{
+    color: rgb(155, 6, 155);
+    background-color:white ;
+}
+#aa{
+    margin-left: 80px;
+    
+}
