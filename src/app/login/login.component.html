@@ -3,14 +3,14 @@
     <div class="container" > <br>
 <h1 style="text-align:center;">Login Page</h1>
 <div class="p-2 mt-2">
-    <input name="acnum" id="accnumber" type="text" [placeholder]="acnt" (change)="acnoChange($event)"  class="form-control">
+    <input name="acnum" id="accnumber" type="text" [placeholder]="acnt" #acno  class="form-control">
 </div>
 <div class="p-2 mt-2">
-    <input name="psw" id="pass1" type="password" placeholder="Password" (change)="passwChange($event)" class="form-control">
+    <input name="psw" id="pass1" type="password" placeholder="Password" #psw class="form-control">
     
 </div> <br>
 <div class="p-2 mt-2">
-    <button  type="button" (click)="login()" id="bt">SIGN IN</button>  <br> <br>
+    <button  type="button" (click)="login(acno,psw)" id="bt">SIGN IN</button>  <br> <br>
 </div>
 <h5 id="aa">Don't have an account?<a  href="./registration.html"  style="text-decoration: none;">Create</a> </h5>
 

@@ -9,7 +9,8 @@ view - component
  1.2 view to component
     1.2.1 event binding  (event name)="functionname()"
     1.2.2 event binding using $event  (event name)="functionname($event)"
+    1.2.3 event binding using templete rendering variable   #variable_name 
 
 2. Two way binding
-
+   2.1 
     
