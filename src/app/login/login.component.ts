@@ -7,9 +7,55 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
+  aim='Your perfect banking partner'
+  acnt='Enter your Account number'
+
+  acno=''
+  passw=''
+
+  userDetails:any={
+    1000:{acno:1000,username:"John",password:123,balance:200000},
+    1001:{acno:1001,username:"Akhil",password:234,balance:100000},
+    1002:{acno:1002,username:"Chrismon",password:345,balance:300000},
+    1003:{acno:1003,username:"Alen",password:567,balance:600000},
+ 
+  }
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  login()
+  {
+    var acnum=this.acno
+    var psw=this.passw
+    let udetails=this.userDetails
+    if(acnum in udetails)
+    {
+      if(psw==udetails[acnum]['password'])
+      {
+        alert('Login success')
+      }
+      else{
+        alert('Incorrect Password')
+      }
+    }
+    else
+    {
+      alert("username not exist or incorrect acc number")
+    }
+    // alert('Login clicked')
+  }
+  acnoChange(event:any)
+  {
+    this.acno=event.target.value
+    console.log(this.acno);
+  }
+  passwChange(event:any)
+  {
+    this.passw=event.target.value
+    console.log(this.passw);
   }
 
 }
