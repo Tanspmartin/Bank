@@ -12,5 +12,23 @@ view - component
     1.2.3 event binding using templete rendering variable   #variable_name 
 
 2. Two way binding
-   2.1 
+   2.1 ngModel - FormModule  
     
+
+
+Redirection 
+***********
+
+method navigateByUrl  ---  Router class method
+
+Dependency Injection  --- data sharing b/w two dependent classes
+
+access specifier --- we can either set the access as private or public(it'll be public as default)
+
+Angular services
+****************
+To store redendent(repeated data) database
+
+Angular services is used to store commonly used data.
+
+ng g s service_name
