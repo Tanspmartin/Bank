@@ -1,0 +1,13 @@
+How to validate input.
+    -Angular Form validation.
+    1.Template driven Form - html
+    2.Model driven Form - ts 
+        2.1 Reactive Form
+            *Form group
+            *Array
+            *Controller
+
+
+
+    npm i : install node package module while cloning Angular project 
+
