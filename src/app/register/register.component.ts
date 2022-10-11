@@ -14,7 +14,9 @@ export class RegisterComponent implements OnInit {
   passwrd=""
 
   registerForm=this.fb.group({
-    uname:['',[Validators.required,Validators.pattern('[a-zA-Z]+')]],accono:['',[]],passwrd:['',[]]
+    uname:['',[Validators.required,Validators.pattern('[a-zA-Z]+')]],
+    accono:['',[Validators.required,Validators.pattern('[0-9]+')]],
+    passwrd:['',[Validators.required,Validators.pattern('[a-zA-Z0-9@#$]+')]]
   })
 
   constructor(private ds:DataService,private router:Router,private fb:FormBuilder) { }
@@ -27,15 +29,22 @@ export class RegisterComponent implements OnInit {
     var accono=this.registerForm.value.accono
     var passwrd=this.registerForm.value.passwrd
     const result=this.ds.register(accono,uname,passwrd)
+  if(this.registerForm.valid)
+  {
     if(result)
     {
       alert('Registered Successfully')
       this.router.navigateByUrl('')
 
-    }
+    }  
     else
     {
       alert('User already exist')
+    }
+  }
+    else
+    {
+      alert('Form Invalid')
     }
 
     // let userDetails=this.ds.userDetails

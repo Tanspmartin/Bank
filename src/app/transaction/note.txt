@@ -11,3 +11,10 @@ How to validate input.
 
     npm i : install node package module while cloning Angular project 
 
+
+
+Local storage in Angular
+
+    *setItem()
+    *getItem()
+    *removeItem()

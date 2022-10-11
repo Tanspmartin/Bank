@@ -1,8 +1,18 @@
 <!-- <h1 style="text-align: center; margin-top: 30px;">DashBoard</h1> -->
 <div class="p-2 mt-2">
-    <h1 class="" style="color: whitesmoke;">Welcome {{user}}</h1>
+
+        <h1 class="" style="color: rgb(1, 1, 1);">Welcome {{user}}</h1>
+
+
+
 </div>
 <div><a href="" routerLink="/transaction" style="text-decoration: none; font-size: large; color: azure;">Check your transaction history</a></div>
+<div><a href="" (click)="logout()" style="text-decoration: none;  margin-left: 90%;"><button type="button" class="btn btn-success">Logout</button></a></div><br>
+<div><a href="" (click)="deleteconfirm()" style="text-decoration: none;  margin-left: 90%;"><button type="button" class="btn btn-success" >Delete</button></a>
+</div>
+
+<app-delete-confirm [item]="accountnum"></app-delete-confirm>
+
 
 <div class="container" > <br>
     <h1 style="text-align:center;">Deposite</h1>
@@ -11,7 +21,7 @@
             <input name="acnum" id="accnumber" type="text" placeholder="Account Number" [(ngModel)]="acnum" class="form-control">
         </div>
         <div class="p-2 mt-2">
-            <input name="passwrd" id="pass2" type="text" placeholder="Password" [(ngModel)]="passwrd" class="form-control">
+            <input name="passwrd" id="pass2" type="password" placeholder="Password" [(ngModel)]="passwrd" class="form-control">
         </div>
         <div class="p-2 mt-2">
             <input name="depos" id="depos" type="text" placeholder="Amount to deposite" [(ngModel)]="depos" class="form-control">
@@ -30,7 +40,7 @@
                 <input name="acnum1" id="accnumber" type="text" placeholder="Account Number" [(ngModel)]="acnum1" class="form-control">
             </div>
             <div class="p-2 mt-2">
-                <input name="passwrd1" id="pass2" type="text" placeholder="Password"[(ngModel)]="passwrd1"  class="form-control">
+                <input name="passwrd1" id="pass2" type="password" placeholder="Password"[(ngModel)]="passwrd1"  class="form-control">
             </div>
             <div class="p-2 mt-2">
                 <input name="Withdraw" id="withd" type="text" placeholder="Amount to Withdraw" [(ngModel)]="withd" class="form-control">

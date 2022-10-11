@@ -15,15 +15,53 @@ export class DataService {
     1003: { acno: 1003, username: "Alen", password: 456, balance: 600000,transaction:[] },
   }
 
-  constructor() { }
+  constructor() {
+  this.getDetails()
+
+   }
+
+  saveDetails()
+  {
+    if(this.userDetails)
+    {
+      localStorage.setItem('database',JSON.stringify(this.userDetails))
+    }
+    if(this.cuser)
+    {
+      localStorage.setItem('currentUser',JSON.stringify(this.cuser))
+    }
+    if(this.currentAcno)
+    {
+      localStorage.setItem('currentAcno',JSON.stringify(this.currentAcno))
+    }
+  }
+
+  getDetails()
+  {
+    if(localStorage.getItem('database'))
+    {
+      this.userDetails=JSON.parse(localStorage.getItem('database') || '')
+    }
+    if(localStorage.getItem('currentUser'))
+    {
+      this.cuser=JSON.parse(localStorage.getItem('currentUser') || '')
+    }
+    if(localStorage.getItem('currentAcno'))
+    {
+      this.currentAcno=JSON.parse(localStorage.getItem('currentAcno') || '')
+    }
+  }
+
   register(acno: any, username: any, password: any) {
     let userDetails = this.userDetails
     if (acno in userDetails) {
       return false
     }
     else {
-      userDetails[acno] = { acno, username, password, balance: 0 }
+      userDetails[acno] = { acno, username, password, balance: 0, transaction:[] }
       console.log(userDetails);
+
+      this.saveDetails()
 
       return true
     }
@@ -35,6 +73,9 @@ export class DataService {
       if (psw == userDetails[acnum]['password']) {
         this.cuser=userDetails[acnum]['username']
         this.currentAcno=acnum
+
+        this.saveDetails()
+
         return true
       }
       else {
@@ -56,6 +97,9 @@ export class DataService {
       if (passwrd == userDetails[acnum]['password']) {
         userDetails[acnum]['balance'] += amount
         userDetails[acnum]['transaction'].push({type:'Credit',amount})
+
+        this.saveDetails()
+
         return userDetails[acnum]['balance']
       }
       else {
@@ -76,6 +120,9 @@ export class DataService {
         if(withamount<=userDetails[acnum1]['balance']){
         userDetails[acnum1]['balance'] -= withamount
         userDetails[acnum1]['transaction'].push({type:'Debit',withamount})
+
+        this.saveDetails()
+
         return userDetails[acnum1]['balance']
       }
       else

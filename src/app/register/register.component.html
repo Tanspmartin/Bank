@@ -4,13 +4,19 @@
         <div class="p-2 mt-2">
             <input name="username" id="username" type="text" placeholder="Username" formControlName="uname" class="form-control">
         </div>
+        <div *ngIf="this.registerForm.get('uname')?.errors && this.registerForm.get('uname')?.touched" class="text-danger" style="margin-left: 10px;"><p>Invalid Username</p></div>
         <div class="p-2 mt-2">
             <input name="acnum" id="regaccno" type="text" placeholder="Account Number" formControlName="accono" class="form-control">
         </div>
+        <div *ngIf="this.registerForm.get('accono')?.errors && this.registerForm.get('accono')?.touched" class="text-danger" style="margin-left: 10px;"><p>Invalid Account Number</p></div>
+
         <div class="p-2 mt-2">
             <input name="pswd" id="regpass" type="password" placeholder="Password" formControlName="passwrd" class="form-control">
             
-        </div> <br>
+        </div>
+        <div *ngIf="this.registerForm.get('passwrd')?.errors && this.registerForm.get('passwrd')?.touched" class="text-danger" style="margin-left: 10px;"><p>Invalid Password</p></div>
+
+        <br>
         <div class="p-2 mt-2">
             <button  type="button" (click)="register()" id="bt">Register</button>  <br> <br>
         </div>

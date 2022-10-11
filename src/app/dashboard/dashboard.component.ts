@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { DataService } from '../services/data.service';
 
 @Component({
@@ -17,12 +18,21 @@ export class DashboardComponent implements OnInit {
   passwrd1=""
   withd=""
 
-  constructor(private ds:DataService) { 
+  accountnum:any
+
+  constructor(private ds:DataService,private router:Router) { 
 
     this.user=this.ds.cuser
   }
 
   ngOnInit(): void {
+
+    if(!localStorage.getItem('currentAcno'))
+    {
+      alert('Please login first')
+      this.router.navigateByUrl('')
+    }
+
   }
   deposite()
   {
@@ -48,6 +58,17 @@ export class DashboardComponent implements OnInit {
       alert(`${withd}rs has been withdrawed, new balance is ${result1}rs` )
     }
 
+  }
+  logout()
+  {
+    localStorage.removeItem('currentUser')
+    localStorage.removeItem('currentAcno')
+    this.router.navigateByUrl('')
+  }
+
+  deleteconfirm()
+  {
+    this.accountnum=JSON.parse(localStorage.getItem('currentAcno') || '')
   }
 
 }

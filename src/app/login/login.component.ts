@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DataService } from '../services/data.service';
 
@@ -15,6 +16,7 @@ export class LoginComponent implements OnInit {
   acno=''
   passw=''
 
+
   // userDetails:any={
   //   1000:{acno:1000,username:"John",password:123,balance:200000},
   //   1001:{acno:1001,username:"Akhil",password:234,balance:100000},
@@ -23,22 +25,40 @@ export class LoginComponent implements OnInit {
  
   // }
 
-  constructor(private router:Router,private ds:DataService) { }
+  loginForm=this.fb.group({
+    acno:['',[Validators.required,Validators.pattern('[0-9]+')]],
+    passw:['',[Validators.required,Validators.pattern('[a-zA-Z0-9@#$]+')]]
+  })
+
+
+
+  constructor(private router:Router,private ds:DataService,private fb:FormBuilder) { }
 
   ngOnInit(): void {
   }
 
   login()
   {
-    var acnum=this.acno
-    var psw=this.passw
+    // var acnum=this.acno
+    // var psw=this.passw
+
+    var acnum=this.loginForm.value.acno
+    var psw=this.loginForm.value.passw
+
 
     const result=this.ds.login(acnum,psw)
+    if(this.loginForm.valid)
+    {
     if(result)
     {
       alert('Login Success')
       this.router.navigateByUrl('dashboard')
     }
+  }
+  else
+  {
+    alert('Form Invalid')
+  }
 
     // let udetails=this.userDetails
     // if(acnum in udetails)
